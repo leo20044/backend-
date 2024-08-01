@@ -11,19 +11,11 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate, IsOptional, MaxLength } from "class-validator";
+import { IsDate, IsString, MaxLength, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 
 @ObjectType()
 class Anime {
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  id!: string;
-
   @ApiProperty({
     required: true,
   })
@@ -33,12 +25,24 @@ class Anime {
   createdAt!: Date;
 
   @ApiProperty({
-    required: true,
+    required: false,
+    type: String,
   })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description!: string | null;
+
+  @ApiProperty({
+    required: true,
+    type: String,
+  })
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: false,
@@ -64,16 +68,12 @@ class Anime {
   title!: string | null;
 
   @ApiProperty({
-    required: false,
-    type: String,
+    required: true,
   })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  description!: string | null;
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  updatedAt!: Date;
 }
 
 export { Anime as Anime };

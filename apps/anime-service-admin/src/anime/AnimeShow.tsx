@@ -3,20 +3,20 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  TextField,
   DateField,
+  TextField,
 } from "react-admin";
 
 export const AnimeShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField label="ID" source="id" />
         <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
+        <TextField label="Description" source="description" />
+        <TextField label="ID" source="id" />
         <TextField label="ReleaseDate" source="releaseDate" />
         <TextField label="Title" source="title" />
-        <TextField label="Description" source="description" />
+        <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>
   );

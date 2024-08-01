@@ -25,7 +25,7 @@ class CategoryCreateInput {
   @Field(() => String, {
     nullable: true,
   })
-  name?: string | null;
+  description?: string | null;
 
   @ApiProperty({
     required: false,
@@ -37,7 +37,7 @@ class CategoryCreateInput {
   @Field(() => String, {
     nullable: true,
   })
-  description?: string | null;
+  name?: string | null;
 }
 
 export { CategoryCreateInput as CategoryCreateInput };

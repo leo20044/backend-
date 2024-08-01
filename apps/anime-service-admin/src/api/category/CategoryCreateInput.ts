@@ -1,4 +1,4 @@
 export type CategoryCreateInput = {
-  name?: string | null;
   description?: string | null;
+  name?: string | null;
 };

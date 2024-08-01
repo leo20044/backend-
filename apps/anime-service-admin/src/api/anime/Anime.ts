@@ -1,8 +1,8 @@
 export type Anime = {
-  id: string;
   createdAt: Date;
-  updatedAt: Date;
+  description: string | null;
+  id: string;
   releaseDate: Date | null;
   title: string | null;
-  description: string | null;
+  updatedAt: Date;
 };

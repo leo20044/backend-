@@ -8,18 +8,18 @@ generator client {
 }
 
 model Category {
-  id          String   @id @default(cuid())
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  name        String?
   description String?
+  id          String   @id @default(cuid())
+  name        String?
+  updatedAt   DateTime @updatedAt
 }
 
 model Anime {
-  id          String    @id @default(cuid())
   createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  description String?
+  id          String    @id @default(cuid())
   releaseDate DateTime?
   title       String?
-  description String?
+  updatedAt   DateTime  @updatedAt
 }

@@ -11,11 +11,23 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsOptional, IsString, MaxLength } from "class-validator";
+import { IsString, MaxLength, IsOptional, IsDate } from "class-validator";
 import { Type } from "class-transformer";
 
 @InputType()
 class AnimeUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description?: string | null;
+
   @ApiProperty({
     required: false,
   })
@@ -38,18 +50,6 @@ class AnimeUpdateInput {
     nullable: true,
   })
   title?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  description?: string | null;
 }
 
 export { AnimeUpdateInput as AnimeUpdateInput };
