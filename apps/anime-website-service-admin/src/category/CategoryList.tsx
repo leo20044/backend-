@@ -1,5 +1,5 @@
 import * as React from "react";
-import { List, Datagrid, ListProps, TextField, DateField } from "react-admin";
+import { List, Datagrid, ListProps, DateField, TextField } from "react-admin";
 import Pagination from "../Components/Pagination";
 
 export const CategoryList = (props: ListProps): React.ReactElement => {
@@ -12,10 +12,10 @@ export const CategoryList = (props: ListProps): React.ReactElement => {
       pagination={<Pagination />}
     >
       <Datagrid rowClick="show">
-        <TextField label="ID" source="id" />
         <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
+        <TextField label="ID" source="id" />
         <TextField label="name" source="name" />
+        <DateField source="updatedAt" label="Updated At" />
       </Datagrid>
     </List>
   );

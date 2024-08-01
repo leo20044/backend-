@@ -36,10 +36,10 @@ export class CategoryControllerBase {
     return await this.service.createCategory({
       data: data,
       select: {
-        id: true,
         createdAt: true,
-        updatedAt: true,
+        id: true,
         name: true,
+        updatedAt: true,
       },
     });
   }
@@ -52,10 +52,10 @@ export class CategoryControllerBase {
     return this.service.categories({
       ...args,
       select: {
-        id: true,
         createdAt: true,
-        updatedAt: true,
+        id: true,
         name: true,
+        updatedAt: true,
       },
     });
   }
@@ -69,10 +69,10 @@ export class CategoryControllerBase {
     const result = await this.service.category({
       where: params,
       select: {
-        id: true,
         createdAt: true,
-        updatedAt: true,
+        id: true,
         name: true,
+        updatedAt: true,
       },
     });
     if (result === null) {
@@ -95,10 +95,10 @@ export class CategoryControllerBase {
         where: params,
         data: data,
         select: {
-          id: true,
           createdAt: true,
-          updatedAt: true,
+          id: true,
           name: true,
+          updatedAt: true,
         },
       });
     } catch (error) {
@@ -121,10 +121,10 @@ export class CategoryControllerBase {
       return await this.service.deleteCategory({
         where: params,
         select: {
-          id: true,
           createdAt: true,
-          updatedAt: true,
+          id: true,
           name: true,
+          updatedAt: true,
         },
       });
     } catch (error) {
@@ -147,18 +147,18 @@ export class CategoryControllerBase {
     const results = await this.service.findAnimeItems(params.id, {
       ...query,
       select: {
-        id: true,
-        createdAt: true,
-        updatedAt: true,
-        releaseDate: true,
-        title: true,
-        description: true,
-
         category: {
           select: {
             id: true,
           },
         },
+
+        createdAt: true,
+        description: true,
+        id: true,
+        releaseDate: true,
+        title: true,
+        updatedAt: true,
       },
     });
     if (results === null) {

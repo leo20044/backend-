@@ -1,11 +1,11 @@
 import { Category } from "../category/Category";
 
 export type Anime = {
-  id: string;
+  category?: Category | null;
   createdAt: Date;
-  updatedAt: Date;
+  description: string | null;
+  id: string;
   releaseDate: Date | null;
   title: string | null;
-  description: string | null;
-  category?: Category | null;
+  updatedAt: Date;
 };

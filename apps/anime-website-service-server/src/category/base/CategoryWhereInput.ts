@@ -11,14 +11,26 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
-import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
-import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { AnimeListRelationFilter } from "../../anime/base/AnimeListRelationFilter";
+import { ValidateNested, IsOptional } from "class-validator";
+import { Type } from "class-transformer";
+import { StringFilter } from "../../util/StringFilter";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
 
 @InputType()
 class CategoryWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => AnimeListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => AnimeListRelationFilter)
+  @IsOptional()
+  @Field(() => AnimeListRelationFilter, {
+    nullable: true,
+  })
+  animeItems?: AnimeListRelationFilter;
+
   @ApiProperty({
     required: false,
     type: StringFilter,
@@ -40,18 +52,6 @@ class CategoryWhereInput {
     nullable: true,
   })
   name?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => AnimeListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => AnimeListRelationFilter)
-  @IsOptional()
-  @Field(() => AnimeListRelationFilter, {
-    nullable: true,
-  })
-  animeItems?: AnimeListRelationFilter;
 }
 
 export { CategoryWhereInput as CategoryWhereInput };

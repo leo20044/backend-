@@ -39,18 +39,18 @@ export class AnimeControllerBase {
           : undefined,
       },
       select: {
-        id: true,
-        createdAt: true,
-        updatedAt: true,
-        releaseDate: true,
-        title: true,
-        description: true,
-
         category: {
           select: {
             id: true,
           },
         },
+
+        createdAt: true,
+        description: true,
+        id: true,
+        releaseDate: true,
+        title: true,
+        updatedAt: true,
       },
     });
   }
@@ -63,18 +63,18 @@ export class AnimeControllerBase {
     return this.service.animeItems({
       ...args,
       select: {
-        id: true,
-        createdAt: true,
-        updatedAt: true,
-        releaseDate: true,
-        title: true,
-        description: true,
-
         category: {
           select: {
             id: true,
           },
         },
+
+        createdAt: true,
+        description: true,
+        id: true,
+        releaseDate: true,
+        title: true,
+        updatedAt: true,
       },
     });
   }
@@ -88,18 +88,18 @@ export class AnimeControllerBase {
     const result = await this.service.anime({
       where: params,
       select: {
-        id: true,
-        createdAt: true,
-        updatedAt: true,
-        releaseDate: true,
-        title: true,
-        description: true,
-
         category: {
           select: {
             id: true,
           },
         },
+
+        createdAt: true,
+        description: true,
+        id: true,
+        releaseDate: true,
+        title: true,
+        updatedAt: true,
       },
     });
     if (result === null) {
@@ -130,18 +130,18 @@ export class AnimeControllerBase {
             : undefined,
         },
         select: {
-          id: true,
-          createdAt: true,
-          updatedAt: true,
-          releaseDate: true,
-          title: true,
-          description: true,
-
           category: {
             select: {
               id: true,
             },
           },
+
+          createdAt: true,
+          description: true,
+          id: true,
+          releaseDate: true,
+          title: true,
+          updatedAt: true,
         },
       });
     } catch (error) {
@@ -164,18 +164,18 @@ export class AnimeControllerBase {
       return await this.service.deleteAnime({
         where: params,
         select: {
-          id: true,
-          createdAt: true,
-          updatedAt: true,
-          releaseDate: true,
-          title: true,
-          description: true,
-
           category: {
             select: {
               id: true,
             },
           },
+
+          createdAt: true,
+          description: true,
+          id: true,
+          releaseDate: true,
+          title: true,
+          updatedAt: true,
         },
       });
     } catch (error) {

@@ -11,18 +11,42 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { CategoryWhereUniqueInput } from "../../category/base/CategoryWhereUniqueInput";
 import {
-  IsDate,
+  ValidateNested,
   IsOptional,
   IsString,
   MaxLength,
-  ValidateNested,
+  IsDate,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { CategoryWhereUniqueInput } from "../../category/base/CategoryWhereUniqueInput";
 
 @InputType()
 class AnimeCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => CategoryWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => CategoryWhereUniqueInput)
+  @IsOptional()
+  @Field(() => CategoryWhereUniqueInput, {
+    nullable: true,
+  })
+  category?: CategoryWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  description?: string | null;
+
   @ApiProperty({
     required: false,
   })
@@ -45,30 +69,6 @@ class AnimeCreateInput {
     nullable: true,
   })
   title?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  description?: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => CategoryWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => CategoryWhereUniqueInput)
-  @IsOptional()
-  @Field(() => CategoryWhereUniqueInput, {
-    nullable: true,
-  })
-  category?: CategoryWhereUniqueInput | null;
 }
 
 export { AnimeCreateInput as AnimeCreateInput };

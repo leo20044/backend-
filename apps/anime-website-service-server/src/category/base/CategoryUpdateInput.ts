@@ -11,29 +11,17 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { AnimeUpdateManyWithoutCategoriesInput } from "./AnimeUpdateManyWithoutCategoriesInput";
 import {
+  ValidateNested,
+  IsOptional,
   IsString,
   MaxLength,
-  IsOptional,
-  ValidateNested,
 } from "class-validator";
-import { AnimeUpdateManyWithoutCategoriesInput } from "./AnimeUpdateManyWithoutCategoriesInput";
 import { Type } from "class-transformer";
 
 @InputType()
 class CategoryUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @MaxLength(1000)
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  name?: string | null;
-
   @ApiProperty({
     required: false,
     type: () => AnimeUpdateManyWithoutCategoriesInput,
@@ -45,6 +33,18 @@ class CategoryUpdateInput {
     nullable: true,
   })
   animeItems?: AnimeUpdateManyWithoutCategoriesInput;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  name?: string | null;
 }
 
 export { CategoryUpdateInput as CategoryUpdateInput };

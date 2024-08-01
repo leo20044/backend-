@@ -11,25 +11,26 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { Anime } from "../../anime/base/Anime";
 import {
-  IsString,
-  IsDate,
-  MaxLength,
-  IsOptional,
   ValidateNested,
+  IsOptional,
+  IsDate,
+  IsString,
+  MaxLength,
 } from "class-validator";
 import { Type } from "class-transformer";
-import { Anime } from "../../anime/base/Anime";
 
 @ObjectType()
 class Category {
   @ApiProperty({
-    required: true,
-    type: String,
+    required: false,
+    type: () => [Anime],
   })
-  @IsString()
-  @Field(() => String)
-  id!: string;
+  @ValidateNested()
+  @Type(() => Anime)
+  @IsOptional()
+  animeItems?: Array<Anime>;
 
   @ApiProperty({
     required: true,
@@ -41,11 +42,11 @@ class Category {
 
   @ApiProperty({
     required: true,
+    type: String,
   })
-  @IsDate()
-  @Type(() => Date)
-  @Field(() => Date)
-  updatedAt!: Date;
+  @IsString()
+  @Field(() => String)
+  id!: string;
 
   @ApiProperty({
     required: false,
@@ -60,13 +61,12 @@ class Category {
   name!: string | null;
 
   @ApiProperty({
-    required: false,
-    type: () => [Anime],
+    required: true,
   })
-  @ValidateNested()
-  @Type(() => Anime)
-  @IsOptional()
-  animeItems?: Array<Anime>;
+  @IsDate()
+  @Type(() => Date)
+  @Field(() => Date)
+  updatedAt!: Date;
 }
 
 export { Category as Category };

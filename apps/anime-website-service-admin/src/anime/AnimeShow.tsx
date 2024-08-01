@@ -3,9 +3,9 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
+  ReferenceField,
   TextField,
   DateField,
-  ReferenceField,
 } from "react-admin";
 import { CATEGORY_TITLE_FIELD } from "../category/CategoryTitle";
 
@@ -13,12 +13,6 @@ export const AnimeShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField label="ID" source="id" />
-        <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
-        <TextField label="releaseDate" source="releaseDate" />
-        <TextField label="title" source="title" />
-        <TextField label="description" source="description" />
         <ReferenceField
           label="Category"
           source="category.id"
@@ -26,6 +20,12 @@ export const AnimeShow = (props: ShowProps): React.ReactElement => {
         >
           <TextField source={CATEGORY_TITLE_FIELD} />
         </ReferenceField>
+        <DateField source="createdAt" label="Created At" />
+        <TextField label="description" source="description" />
+        <TextField label="ID" source="id" />
+        <TextField label="releaseDate" source="releaseDate" />
+        <TextField label="title" source="title" />
+        <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>
   );

@@ -8,32 +8,32 @@ generator client {
 }
 
 model Category {
-  id         String   @id @default(cuid())
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  name       String?
   animeItems Anime[]
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  name       String?
+  updatedAt  DateTime @updatedAt
 }
 
 model Anime {
-  id          String    @id @default(cuid())
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  releaseDate DateTime?
-  title       String?
-  description String?
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
+  createdAt   DateTime  @default(now())
+  description String?
+  id          String    @id @default(cuid())
+  releaseDate DateTime?
+  title       String?
+  updatedAt   DateTime  @updatedAt
 }
 
 model User {
-  id        String   @id @default(cuid())
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  firstName String?
-  lastName  String?
-  username  String   @unique
   email     String?  @unique
+  firstName String?
+  id        String   @id @default(cuid())
+  lastName  String?
   password  String
   roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }

@@ -1,9 +1,9 @@
+import { AnimeListRelationFilter } from "../anime/AnimeListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { AnimeListRelationFilter } from "../anime/AnimeListRelationFilter";
 
 export type CategoryWhereInput = {
+  animeItems?: AnimeListRelationFilter;
   id?: StringFilter;
   name?: StringNullableFilter;
-  animeItems?: AnimeListRelationFilter;
 };

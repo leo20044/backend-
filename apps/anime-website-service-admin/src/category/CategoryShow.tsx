@@ -4,8 +4,8 @@ import {
   Show,
   SimpleShowLayout,
   ShowProps,
-  TextField,
   DateField,
+  TextField,
   ReferenceManyField,
   Datagrid,
   ReferenceField,
@@ -17,22 +17,16 @@ export const CategoryShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
-        <TextField label="ID" source="id" />
         <DateField source="createdAt" label="Created At" />
-        <DateField source="updatedAt" label="Updated At" />
+        <TextField label="ID" source="id" />
         <TextField label="name" source="name" />
+        <DateField source="updatedAt" label="Updated At" />
         <ReferenceManyField
           reference="Anime"
           target="categoryId"
           label="AnimeItems"
         >
           <Datagrid rowClick="show">
-            <TextField label="ID" source="id" />
-            <DateField source="createdAt" label="Created At" />
-            <DateField source="updatedAt" label="Updated At" />
-            <TextField label="releaseDate" source="releaseDate" />
-            <TextField label="title" source="title" />
-            <TextField label="description" source="description" />
             <ReferenceField
               label="Category"
               source="category.id"
@@ -40,6 +34,12 @@ export const CategoryShow = (props: ShowProps): React.ReactElement => {
             >
               <TextField source={CATEGORY_TITLE_FIELD} />
             </ReferenceField>
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="description" source="description" />
+            <TextField label="ID" source="id" />
+            <TextField label="releaseDate" source="releaseDate" />
+            <TextField label="title" source="title" />
+            <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

@@ -4,9 +4,9 @@ import {
   Create,
   SimpleForm,
   CreateProps,
-  TextInput,
   ReferenceArrayInput,
   SelectArrayInput,
+  TextInput,
 } from "react-admin";
 
 import { AnimeTitle } from "../anime/AnimeTitle";
@@ -15,7 +15,6 @@ export const CategoryCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <TextInput label="name" source="name" />
         <ReferenceArrayInput
           source="animeItems"
           reference="Anime"
@@ -24,6 +23,7 @@ export const CategoryCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={AnimeTitle} />
         </ReferenceArrayInput>
+        <TextInput label="name" source="name" />
       </SimpleForm>
     </Create>
   );

@@ -4,10 +4,10 @@ import {
   Create,
   SimpleForm,
   CreateProps,
-  DateTimeInput,
-  TextInput,
   ReferenceInput,
   SelectInput,
+  TextInput,
+  DateTimeInput,
 } from "react-admin";
 
 import { CategoryTitle } from "../category/CategoryTitle";
@@ -16,9 +16,6 @@ export const AnimeCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
-        <DateTimeInput label="releaseDate" source="releaseDate" />
-        <TextInput label="title" source="title" />
-        <TextInput label="description" multiline source="description" />
         <ReferenceInput
           source="category.id"
           reference="Category"
@@ -26,6 +23,9 @@ export const AnimeCreate = (props: CreateProps): React.ReactElement => {
         >
           <SelectInput optionText={CategoryTitle} />
         </ReferenceInput>
+        <TextInput label="description" multiline source="description" />
+        <DateTimeInput label="releaseDate" source="releaseDate" />
+        <TextInput label="title" source="title" />
       </SimpleForm>
     </Create>
   );
