@@ -1,0 +1,25 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Category {
+  createdAt   DateTime @default(now())
+  description String?
+  id          String   @id @default(cuid())
+  name        String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Anime {
+  createdAt   DateTime  @default(now())
+  description String?
+  id          String    @id @default(cuid())
+  releaseDate DateTime?
+  title       String?
+  updatedAt   DateTime  @updatedAt
+}
